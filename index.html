@@ -228,23 +228,100 @@
         <div class="ww-section bg-light" id="comment">
             <div class="ww-photo-gallery">
                 <div class="container">
-                    <div class="col text-center">
-                        <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">축하글 남기기</h2>
-                        <!--- <h5 class="h5 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">github 계정 인증이 필요합니다!</h5>
-                            --->
-                        <br>
-                        <div id="utterances">
-                            <script src="https://utteranc.es/client.js"
-                                repo="캐슬깃헙계정/캐슬리포"
-                                issue-term="pathname"
-                                theme="github-light"
-                                crossorigin="anonymous"
-                                async>
-                            </script>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">작성하기</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">방명록</h5>
+                              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 100px;"> 
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>이름</th> 
+                                            <td>
+                                                <input id="guest_name" type="text" maxlength="12" placeholder="">
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <th>비밀번호</th> 
+                                            <td><input id="guest_password" type="password" maxlength="15"></td>
+                                        </tr> 
+                                        <tr>
+                                            <td colspan="2">
+                                                <textarea id="guest_contents" maxlength="100" placeholder="100자 이내로 작성해주세요"></textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                                <button id="guest_book_btn" class="btn-submit">
+                                    작성하기
+                                </button>
+                            </div>
+                            <!-- <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Send message</button>
+                            </div> -->
+                          </div>
                         </div>
+                      </div>
 
-                        <br>
-                    </div>
+                    <!-- <div aria-expanded="true" data-modal="c-guestbook-delete-modal" class="v--modal-overlay" style="background: rgba(0, 0, 0, 0.7); border-radius: 0px;">
+                        <div class="v--modal-background-click">
+                            <div class="v--modal-top-right">
+
+                            </div> 
+                            <div class="v--modal-box v--modal vue-dialog c-guestbook-delete-modal" style="top: 241px; left: 337px; width: 360px; height: auto;">
+                                <div class="c-guestbook-header">
+                                    <span>방명록</span> 
+                                    <div class="btn-close">
+                                        <span class="icon">
+                                            <svg width="15px" height="15px" viewBox="0 0 15 15" fill="black" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.7929 7.49998L1.14645 1.85353L1.85356 1.14642L7.50001 6.79287L13.1465 1.14642L13.8536 1.85353L8.20711 7.49998L13.8536 13.1464L13.1465 13.8535L7.50001 8.20708L1.85356 13.8535L1.14645 13.1464L6.7929 7.49998Z">
+
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div> 
+                                <div onselectstart="return false" class="c-guestbook-modal-wrap">
+                                    <div class="c-guestbook-modal-inner">
+                                        <table>
+                                            <colgroup>
+                                                <col style="width: 100px;"> 
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>이름</th> 
+                                                    <td>
+                                                        <input type="text" maxlength="12" placeholder="">
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <th>비밀번호</th> 
+                                                    <td><input type="password" maxlength="15"></td>
+                                                </tr> 
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <textarea maxlength="100" placeholder="100자 이내로 작성해주세요"></textarea>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table> 
+                                        <button class="btn-submit">
+                                            작성하기
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -253,6 +330,10 @@
 </div>
 </div>
 <footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="./index.js"></script>
 <script src="scripts/main.js"></script>
 
 <div class="bottom_right"><i class="fa fa-arrow-up fa-2x" id="go-to-top" style="cursor: pointer;"></i>
