@@ -1,7 +1,6 @@
 // Add your javascript here
 // Don't forget to add it into respective layouts where this js file is needed
 
-
 $(document).ready(function () {
     $('#go-to-top').click(function () {
         $('html,body').animate({scrollTop: 0}, 400);
@@ -10,17 +9,36 @@ $(document).ready(function () {
 
     $('#guest_book_btn').click(function() {
         console.log("Click!!!")
+       
         fetch("./guest_book.json")
         .then(response => {
-            console.log(JSON.stringify(response))
-        return response.json();
+            return response.json();
         })
-        .then(jsondata => console.log(jsondata));
+        .then(json => {
 
-        const data = initGuestBook()
+            var adapter = new LocalStorage('db')
+            var db = low(adapter)
+            db.defaults({ guests: []}).write()
+            let a = [1,2,3,4];
+            let b = _.shuffle(a);
 
-        console.log(JSON.stringify(data))
+            console.log(b); // [4,3,1,2]
+            data = json.list;
 
+            newObj = JSON.stringify(initGuestBook());
+            data.push(JSON.parse(newObj))
+            
+            let html = '';
+
+            data.forEach(element => {
+                html += `<li> ${element.author} </li>`
+            });
+
+
+            $('#guest_list').html(html)
+            $('#exampleModal').modal('hide');
+
+        });
     });
 })
 
@@ -32,7 +50,7 @@ function initGuestBook(){
     let guestContents = $('#guest_contents').val()
 
     return {
-        'guestName' : guestName,
+        'author' : guestName,
         'guestPassword' : guestPassword,
         'guestContents' : guestContents,
     }

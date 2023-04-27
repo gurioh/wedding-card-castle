@@ -13,7 +13,19 @@
     <link href="styles/main.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
+            
+    <script>
+        var adapter = new LocalStorage('db')
+        var db = low(adapter)
+        db.defaults({ guests: []}).write()
+        let a = [1,2,3,4];
+        let b = _.shuffle(a);
 
+        console.log(b); // [4,3,1,2]
+    </script>
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GZH9PBVKH"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -228,6 +240,9 @@
         <div class="ww-section bg-light" id="comment">
             <div class="ww-photo-gallery">
                 <div class="container">
+                    <div id="guest_list">
+
+                    </div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">작성하기</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -272,56 +287,7 @@
                         </div>
                       </div>
 
-                    <!-- <div aria-expanded="true" data-modal="c-guestbook-delete-modal" class="v--modal-overlay" style="background: rgba(0, 0, 0, 0.7); border-radius: 0px;">
-                        <div class="v--modal-background-click">
-                            <div class="v--modal-top-right">
-
-                            </div> 
-                            <div class="v--modal-box v--modal vue-dialog c-guestbook-delete-modal" style="top: 241px; left: 337px; width: 360px; height: auto;">
-                                <div class="c-guestbook-header">
-                                    <span>방명록</span> 
-                                    <div class="btn-close">
-                                        <span class="icon">
-                                            <svg width="15px" height="15px" viewBox="0 0 15 15" fill="black" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.7929 7.49998L1.14645 1.85353L1.85356 1.14642L7.50001 6.79287L13.1465 1.14642L13.8536 1.85353L8.20711 7.49998L13.8536 13.1464L13.1465 13.8535L7.50001 8.20708L1.85356 13.8535L1.14645 13.1464L6.7929 7.49998Z">
-
-                                                </path>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div> 
-                                <div onselectstart="return false" class="c-guestbook-modal-wrap">
-                                    <div class="c-guestbook-modal-inner">
-                                        <table>
-                                            <colgroup>
-                                                <col style="width: 100px;"> 
-                                                <col>
-                                            </colgroup>
-                                            <tbody>
-                                                <tr>
-                                                    <th>이름</th> 
-                                                    <td>
-                                                        <input type="text" maxlength="12" placeholder="">
-                                                    </td>
-                                                </tr> 
-                                                <tr>
-                                                    <th>비밀번호</th> 
-                                                    <td><input type="password" maxlength="15"></td>
-                                                </tr> 
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <textarea maxlength="100" placeholder="100자 이내로 작성해주세요"></textarea>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table> 
-                                        <button class="btn-submit">
-                                            작성하기
-                                        </button>
-                                    </div>
-                                </div>
-                        </div>
-                    </div> -->
+                  
                 </div>
             </div>
         </div>
@@ -333,8 +299,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-<script src="./index.js"></script>
-<script src="scripts/main.js"></script>
+<script type="module" src="scripts/main.js"></script>
 
 <div class="bottom_right"><i class="fa fa-arrow-up fa-2x" id="go-to-top" style="cursor: pointer;"></i>
 </div>
